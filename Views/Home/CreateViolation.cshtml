@@ -1,0 +1,50 @@
+﻿@model RecordingOfViolations.Models.Violation
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Нове порушення</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Reason,"Причина")
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(m => m.ReasonId, ViewBag.Reasons as SelectList)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Address,"Адреса")
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(m => m.Address)
+        @Html.ValidationMessageFor(model => model.Address)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Policeman,"Інспектор ДАІ")
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(m => m.Policeman)
+        @Html.ValidationMessageFor(model => model.Policeman)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Offender,"Порушник")
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(m => m.Offender)
+        @Html.ValidationMessageFor(model => model.Offender)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Price,"Штраф")
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(m => m.Price)
+        @Html.ValidationMessageFor(model => model.Price)
+    </div>
+
+    <input type="submit" value="Добавити">
+}

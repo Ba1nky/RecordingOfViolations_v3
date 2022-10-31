@@ -1,0 +1,55 @@
+﻿@model RecordingOfViolations.Models.Violation
+@{
+    ViewBag.Title = "Редагувати порушення";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Порушення №@Model.ViolationId</h2>
+@using (Html.BeginForm("EditViolation","Home",FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(m => m.ViolationId)
+        @Html.HiddenFor(m => m.Date)
+
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Reason,"Причина")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.ReasonId, ViewBag.Reasons as SelectList)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Address,"Адреса")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Policeman,"Інспектор ДАІ")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.Policeman)
+            @Html.ValidationMessageFor(model => model.Policeman)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Offender,"Порушник")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.Offender)
+            @Html.ValidationMessageFor(model => model.Offender)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Price,"Штраф")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+        <p>
+            <input type="submit" value="Редагувати">
+        </p>
+    </fieldset>
+}    
