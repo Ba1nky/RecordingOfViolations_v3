@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RecordingOfViolations.Models
 {
-    [NotAllowedAttribute(ErrorMessage = "Неприпустиме порушення!")]
+
     public class Violation
     {
         public int ViolationId { get; set; }
@@ -26,13 +26,13 @@ namespace RecordingOfViolations.Models
         [Display(Name = "Сума штрафу")]
         public decimal? Price { get; set; }
 
-        [Required(ErrorMessage = "Дата не повина бути пустною")]
+
         [Display(Name = "Дата")]
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; } = DateTime.Now;
 
-        public int ReasonId { get; set; }
-        public Reason Reason { get; set; } = null!;
+        public int? ReasonId { get; set; }
+        public Reason? Reason { get; set; }
 
         public List<PaymentСheck> PaymentСhecks { get; set; } = new List<PaymentСheck>();
     }
