@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RecordingOfViolations.Models
 {
-
+    [NotAllowedAttribute(ErrorMessage = "Неприпустиме порушення!")]
     public class Violation
     {
         public int ViolationId { get; set; }
